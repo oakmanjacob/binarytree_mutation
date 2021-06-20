@@ -1,6 +1,6 @@
 import sys
 from binarytree import tree, Node, build
-
+###############################################################################
 def permute_even_ones(input_tree, output_tree, one_count=0):
     if input_tree == None or output_tree == None:
         return
@@ -11,7 +11,7 @@ def permute_even_ones(input_tree, output_tree, one_count=0):
 
     permute_even_ones(input_tree.left, output_tree.left, one_count)
     permute_even_ones(input_tree.right, output_tree.right, one_count)
-
+###############################################################################
 def generate_values(height):
     assert(height > 0)
 
@@ -23,7 +23,7 @@ def generate_values(height):
             values.append(1)
     
     return values
-
+###############################################################################
 height = 3
 if len(sys.argv) > 1:
     assert(int(sys.argv[1]) >= 0)
@@ -44,4 +44,4 @@ for x in range(1, 1000000):
     print(bt_lineage[x])
     if bt_lineage[x].values == bt_lineage[0].values:
         break
-
+###############################################################################
