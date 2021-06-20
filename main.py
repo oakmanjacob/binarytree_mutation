@@ -1,3 +1,4 @@
+import sys
 from binarytree import tree, Node, build
 
 def permute_even_ones(input_tree, output_tree, one_count=0):
@@ -23,17 +24,24 @@ def generate_values(height):
     
     return values
 
+height = 3
+if len(sys.argv) > 1:
+    assert(int(sys.argv[1]) >= 0)
+    height = int(sys.argv[1])
+
 bt_lineage = []
-bt_lineage.append(build(generate_values(3)))
+bt_lineage.append(build(generate_values(height)))
 
 # Pretty-print the trees in stdout.
 print("Generation 0:")
 print(bt_lineage[0])
 
-for x in range(1, 9):
+for x in range(1, 1000000):
     bt_lineage.append(build(bt_lineage[x - 1].values))
     permute_even_ones(bt_lineage[x - 1], bt_lineage[x])
 
     print("Generation", x, ": ")
     print(bt_lineage[x])
+    if bt_lineage[x].values == bt_lineage[0].values:
+        break
 
